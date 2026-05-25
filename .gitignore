@@ -1,0 +1,23 @@
+# Environment variables — NEVER commit this
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# VS Code
+.vscode/
+
+# Data — resumes are private, don't push to GitHub
+data/
+
+# Evaluation output
+evaluation_results.json
+
+# OS
+.DS_Store
+Thumbs.db
