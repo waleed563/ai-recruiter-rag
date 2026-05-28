@@ -1,0 +1,33 @@
+services:
+
+  # =========================
+  # Service 1: FastAPI Backend
+  # =========================
+  api:
+    build: .
+    container_name: ai-recruiter-api
+    command: python -m uvicorn api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  # =========================
+  # Service 2: Streamlit Frontend
+  # =========================
+  streamlit:
+    build: .
+    container_name: ai-recruiter-ui
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0 --server.enableCORS false --server.enableXsrfProtection false --server.enableWebsocketCompression false --browser.gatherUsageStats false
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - api
+    restart: unless-stopped

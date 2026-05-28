@@ -1,0 +1,32 @@
+# Don't copy these into the Docker image
+
+# Virtual environment — Docker installs its own
+venv/
+.venv/
+
+# Data — resumes are private, not part of the image
+# They stay in Qdrant cloud
+data/
+
+# Git files
+.git/
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Environment file — injected at runtime, never baked into image
+.env
+
+# Evaluation output
+evaluation_results.json
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -126,7 +126,8 @@ st.markdown("""
 # API Config
 # =========================
 
-API_URL = "http://127.0.0.1:8000"
+import os
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 
 def call_search(query, min_experience, top_n):
