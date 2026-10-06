@@ -2,8 +2,6 @@
 
 > Search 231 resumes using natural language. Built with LangChain, Qdrant, FastAPI, and Streamlit. Production-hardened with security, semantic caching, observability, and cost controls.
 
-**Live API:** https://ai-recruiter-rag.onrender.com/docs
-
 ---
 
 ## What It Does
@@ -131,7 +129,7 @@ Evaluated with RAGAS-style LLM-as-judge scoring across 30 recruiter queries:
 | Layer | Technology |
 |---|---|
 | Embeddings | OpenAI `text-embedding-3-small` |
-| Vector DB | Qdrant Cloud |
+| Vector DB | Qdrant (local via Docker, or Qdrant Cloud) |
 | LLM | GPT-4o-mini |
 | Orchestration | LangChain |
 | Backend | FastAPI |
@@ -139,7 +137,7 @@ Evaluated with RAGAS-style LLM-as-judge scoring across 30 recruiter queries:
 | Observability | LangSmith |
 | Caching | TTLCache (cachetools) + cosine similarity |
 | Security | slowapi, regex sanitization, tiktoken |
-| Deployment | Docker + Render |
+| Deployment | Docker |
 | Language | Python 3.13 |
 
 ---
@@ -199,8 +197,8 @@ cp .env.example .env
 Fill in your credentials:
 ```env
 OPENAI_API_KEY=sk-...
-QDRANT_URL=https://your-cluster.qdrant.io:6333
-QDRANT_API_KEY=your-qdrant-key
+QDRANT_URL=http://localhost:6333   # or your Qdrant Cloud URL
+QDRANT_API_KEY=                    # leave empty for local Qdrant
 QDRANT_COLLECTION=resume_collection
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=ls__your-langsmith-key
